@@ -1,0 +1,139 @@
+<style>
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    @media screen and (min-width: 481px) {
+        .container {
+            max-width: 540px;
+        }
+    }
+
+    @media screen and (min-width: 769px) {
+        .container {
+            max-width: 720px;
+        }
+    }
+
+    @media screen and (min-width: 981px) {
+        .container {
+            max-width: 960px;
+        }
+    }
+
+    .wm-hero {
+        --duration1: 2.5s;
+        --duration2: calc(var(--duration1) / 2);
+        --delay1: calc(var(--duration2) / 2);
+        --delay2: calc(var(--duration2) + var(--delay1));
+        --easing: cubic-bezier(0.65, 0.05, 0.36, 1);
+        background-color: wheat;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .wm-hero h1 {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        opacity: 0;
+        transform: translateY(3em);
+        -webkit-animation: loadH1 var(--duration1) var(--easing) var(--delay1) forwards;
+        animation: loadH1 var(--duration1) var(--easing) var(--delay1) forwards;
+    }
+
+    @media screen and (min-width: 981px) {
+        .wm-hero h1 {
+            font-size: 56px;
+        }
+    }
+
+    .wm-hero img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: 1em 1em 1em 1em;
+        transform: translateY(100%);
+        -webkit-animation: loadImg var(--duration2) var(--easing) var(--delay2) forwards;
+        animation: loadImg var(--duration2) var(--easing) var(--delay2) forwards;
+    }
+
+    @-webkit-keyframes loadH1 {
+        0% {
+            opacity: 0;
+            transform: translateY(3em);
+        }
+        30%, 50% {
+            opacity: 1;
+            transform: translateY(3em);
+        }
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes loadH1 {
+        0% {
+            opacity: 0;
+            transform: translateY(3em);
+        }
+        30%, 50% {
+            opacity: 1;
+            transform: translateY(3em);
+        }
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @-webkit-keyframes loadImg {
+        0% {
+            transform: translateY(100%);
+        }
+        100% {
+            transform: none;
+        }
+    }
+
+    @keyframes loadImg {
+        0% {
+            transform: translateY(100%);
+        }
+        100% {
+            transform: none;
+        }
+    }
+</style>
+
+<div class="wm-hero js-animate">
+    <div class="vm-hero__inner container mx-auto ">
+        <h1>Cabinet De Avocat<br>Adriana Sandu</h1>
+        <img id="image_shower" width="960" height="400" >
+    </div>
+</div>
+
+<script>
+    var imgArray = ['https://images.unsplash.com/photo-1589994965851-a8f479c573a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8anVzdGljZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1591189824361-e61ccc736d44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGp1c3RpY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'];
+
+    function imgRandom() {
+        random_index  = Math.floor(Math.random() * imgArray.length);
+        selected_image = imgArray[random_index];
+        document.getElementById("image_shower").src = `${selected_image}`;
+    }
+    imgRandom()
+
+</script>
